@@ -40,8 +40,13 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public List<Request> listRequestOfUser(Integer username) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Request> findByCustomerUsername = requestRepository.findByCustomerUsername(username);
+		return findByCustomerUsername;
+	}
+
+	@Override
+	public Request get(Integer id) {
+		return requestRepository.findOne(id);
 	}
 
 }
