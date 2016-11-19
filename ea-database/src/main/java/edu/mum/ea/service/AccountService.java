@@ -4,9 +4,9 @@ import edu.mum.ea.entity.Account;
 
 public interface AccountService {
 	
-	public Account withdraw(Account account, Double amount);
+	public Account withdraw(Integer accountId, Double amount);
 	
-	public Account deposit(Account account, Double amount);
+	public Account deposit(Integer accountId, Double amount);
 	
 	public Account create(Account account);
 
