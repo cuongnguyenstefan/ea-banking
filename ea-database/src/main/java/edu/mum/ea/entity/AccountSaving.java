@@ -3,7 +3,7 @@ package edu.mum.ea.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Saving extends Account {
+public class AccountSaving extends Account {
 
 	private double interest;
 
