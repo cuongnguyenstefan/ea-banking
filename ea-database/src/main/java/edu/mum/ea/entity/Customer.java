@@ -3,20 +3,39 @@ package edu.mum.ea.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Customer extends User {
+	    
+	    @Id
+	    @GeneratedValue
+	    private Integer id;
 		
+		@OneToMany(mappedBy = "staff")
+		private List<StaffHistory> histories = new ArrayList<StaffHistory>();
+
+		public List<StaffHistory> getHistories() {
+			return histories;
+		}
+
+		public void setHistories(List<StaffHistory> histories) {
+			this.histories = histories;
+		}
 		@OneToMany(mappedBy = "customer")
-		private List<Account> accounts = new ArrayList<Account>();
+		private List<Account> account = new ArrayList<Account>();
 
-		public List<Account> getAccounts() {
-			return accounts;
+		public List<Account> getAccount() {
+			return account;
 		}
 
-		public void setAccounts(List<Account> accounts) {
-			this.accounts = accounts;
+		public void setAccount(List<Account> account) {
+			this.account = account;
 		}
+
+		
 }

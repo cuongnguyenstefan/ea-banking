@@ -24,5 +24,12 @@ public class CustomerServiceImpl implements CustomerService{
 //		return (List<Customer>) customerRepository.findByName(customerName);
 		return null;
 	}
+	
+	@Override
+	public List<Customer> findByAccount(String customerAccount) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
