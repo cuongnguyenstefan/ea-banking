@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -28,6 +29,9 @@ public abstract class User {
 	private String lastName;
 	
 	private String password;
+	
+	@Embedded
+	public Address address;
 	
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
