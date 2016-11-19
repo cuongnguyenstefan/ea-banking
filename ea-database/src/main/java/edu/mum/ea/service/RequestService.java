@@ -1,5 +1,5 @@
 package edu.mum.ea.service;
 
-public interface RequestService {
+public interface RequestService{
 
 }

@@ -4,10 +4,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import edu.mum.ea.entity.Request;
+import edu.mum.ea.entity.RequestAccount;
 
 @Repository
 @Transactional
-public interface RequestRepository extends RequestBaseRepository<Request>{
+public interface RequestAccountRepository extends RequestBaseRepository<RequestAccount>{
 
 }

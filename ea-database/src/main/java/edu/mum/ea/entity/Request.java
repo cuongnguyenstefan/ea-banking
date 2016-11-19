@@ -22,7 +22,7 @@ import edu.mum.ea.entity.enumtype.RequestStatus;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="requestType", discriminatorType = DiscriminatorType.STRING)
-public class Request {
+public abstract class Request {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
