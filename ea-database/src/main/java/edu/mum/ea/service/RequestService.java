@@ -12,4 +12,6 @@ public interface RequestService {
 	
 	public List<Request> listRequestOfUser(Integer username);
 	
+	public Request get(Integer id);
+	
 }
