@@ -8,7 +8,7 @@ import edu.mum.ea.entity.Customer;
 import edu.mum.ea.repo.CustomerRepository;
 import edu.mum.ea.service.CustomerService;
 
-public class CustomerServiceImp implements CustomerService{
+public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	CustomerRepository customerRepository;
      
@@ -21,7 +21,8 @@ public class CustomerServiceImp implements CustomerService{
 	@Override
 	public List<Customer> findByName(String customerName) {
 		// TODO Auto-generated method stub
-		return (List<Customer>) customerRepository.findByName(customerName);
+//		return (List<Customer>) customerRepository.findByName(customerName);
+		return null;
 	}
 
 }
