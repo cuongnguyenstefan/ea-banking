@@ -1,8 +1,5 @@
 package edu.mum.ea.service.impl;
 
-<<<<<<< HEAD
-public class AccountServiceImpl {
-=======
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -32,6 +29,17 @@ public class AccountServiceImpl implements AccountService  {
 		// TODO Auto-generated method stub
 		return null;
 	}
->>>>>>> origin/master
+
+	@Override
+	public double withdraw() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double deposit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
