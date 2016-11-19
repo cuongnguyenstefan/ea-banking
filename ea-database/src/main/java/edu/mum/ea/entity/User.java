@@ -1,20 +1,16 @@
 package edu.mum.ea.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
-import edu.mum.ea.entity.enumtype.Role;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -22,7 +18,7 @@ public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer userId;
+	private Integer username;
 	
 	private String firstName;
 	
@@ -30,29 +26,14 @@ public abstract class User {
 	
 	private String password;
 	
+	private int enabled = 1;
+	
+	@OneToMany(mappedBy = "user")
+	private List<UserRoles> roles = new ArrayList<UserRoles>();
+	
 	@Embedded
 	public Address address;
 	
-	@ElementCollection
-	@Enumerated(EnumType.STRING)
-	private Set<Role> roles = new HashSet<Role>();
-	
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -61,13 +42,6 @@ public abstract class User {
 		this.password = password;
 	}
 	
-	public Boolean hasRole(Role role) {
-		if (roles.contains(role)) {
-			return true;
-		}
-		return false;
-	}
-
 	public String getLastName() {
 		return lastName;
 	}
@@ -82,5 +56,29 @@ public abstract class User {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public Integer getUsername() {
+		return username;
+	}
+
+	public void setUsername(Integer username) {
+		this.username = username;
+	}
+
+	public List<UserRoles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<UserRoles> roles) {
+		this.roles = roles;
+	}
+
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
 	}
 }

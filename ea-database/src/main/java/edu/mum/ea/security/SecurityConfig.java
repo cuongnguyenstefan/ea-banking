@@ -1,4 +1,6 @@
-package com.edu.mum.ea.security;
+package edu.mum.ea.security;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +12,9 @@ import edu.mum.ea.entity.enumtype.Role;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private DataSource dataSource;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -24,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-			.inMemoryAuthentication()
-				.withUser("user").password("password").roles("USER");
+		auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery("select username, password, enabled from user where username=?")
+		.authoritiesByUsernameQuery("select username, role from user_roles where usename=?");
 	}
 }

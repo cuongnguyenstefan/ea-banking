@@ -3,19 +3,12 @@ package edu.mum.ea.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Customer extends User {
 	    
-	    @Id
-	    @GeneratedValue
-	    private Integer id;
-		
 		@OneToMany(mappedBy = "staff")
 		private List<StaffHistory> histories = new ArrayList<StaffHistory>();
 
