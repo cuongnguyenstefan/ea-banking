@@ -21,16 +21,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/css/**", "/index").permitAll()		
-				.antMatchers("/user/**").hasRole(Role.CUSTOMER.getValue())			
-				.and()
-			.formLogin()
-				.loginPage("/login").failureUrl("/login-error");	
+				.antMatchers("/customer/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")
+				.antMatchers("/account/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")	
+				.antMatchers("/staff/**").access("hasRole('" + Role.ROLE_ADMIN.getValue() + "')")
+			.and()
+				.formLogin()
+				.loginPage("/login").failureUrl("/login?error")
+				.usernameParameter("username").passwordParameter("password")
+			.and()
+				.exceptionHandling().accessDeniedPage("/403")
+			.and()
+				.csrf();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
 		.usersByUsernameQuery("select username, password, enabled from user where username=?")
-		.authoritiesByUsernameQuery("select username, role from user_roles where usename=?");
+		.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
 }

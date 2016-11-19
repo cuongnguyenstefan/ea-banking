@@ -1,7 +1,7 @@
 package edu.mum.ea.entity.enumtype;
 
 public enum Role {
-	STAFF("STAFF"), CUSTOMER("CUSTOMER");
+	ROLE_ADMIN("ROLE_ADMIN"), ROLE_USER("ROLE_USER");
 	
 	private String type;
 	
