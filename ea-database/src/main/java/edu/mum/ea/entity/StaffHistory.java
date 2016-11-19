@@ -23,14 +23,14 @@ public class StaffHistory {
 	private int historyId;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "staffId")
 	private Staff staff;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "customerId")
 	private Customer customer;
 	
 	@Enumerated(EnumType.STRING)
