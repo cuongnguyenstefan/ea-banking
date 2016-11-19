@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,7 @@ public class StaffServiceImpl implements StaffService {
 	@Override
 	public Staff getStaff(Integer username) {
 		Staff staff = staffRepository.findOne(username);
+		Hibernate.initialize(staff.getHistories());
 		return staff;
 	}
 
