@@ -29,7 +29,7 @@ public abstract class Request {
 	private int requestId;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "customerId")
 	private Customer customer;
 	
 	@Enumerated(EnumType.STRING)
@@ -37,6 +37,38 @@ public abstract class Request {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn;
+
+	public int getRequestId() {
+		return requestId;
+	}
+
+	public void setRequestId(int requestId) {
+		this.requestId = requestId;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public RequestStatus getRequestStatus() {
+		return requestStatus;
+	}
+
+	public void setRequestStatus(RequestStatus requestStatus) {
+		this.requestStatus = requestStatus;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
 	
 	
 }

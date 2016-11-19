@@ -1,4 +1,4 @@
-package edu.mum.ea.repo;
+package edu.mum.ea.repo.base;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;

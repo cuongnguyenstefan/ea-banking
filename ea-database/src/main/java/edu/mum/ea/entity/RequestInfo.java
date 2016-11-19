@@ -15,5 +15,13 @@ public class RequestInfo extends Request{
 	
 	@ElementCollection
 	private Map<String, String> infoChanges = new HashMap<String, String>();
+
+	public Map<String, String> getInfoChanges() {
+		return infoChanges;
+	}
+
+	public void setInfoChanges(Map<String, String> infoChanges) {
+		this.infoChanges = infoChanges;
+	}
 	
 }
