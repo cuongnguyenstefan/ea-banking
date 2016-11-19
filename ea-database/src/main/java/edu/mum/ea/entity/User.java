@@ -10,15 +10,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import edu.mum.ea.entity.enumtype.Role;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer userId;
 	
-	private String name;
+	private String firstName;
+	
+	private String lastName;
 	
 	private String password;
 	
@@ -32,14 +39,6 @@ public class User {
 
 	public void setUserId(Integer userId) {
 		this.userId = userId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Set<Role> getRoles() {
@@ -63,5 +62,21 @@ public class User {
 			return true;
 		}
 		return false;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 }
