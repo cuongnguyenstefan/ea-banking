@@ -6,4 +6,5 @@ import edu.mum.ea.entity.User;
 
 public interface UserBaseRepository<T extends User> extends CrudRepository<T, Integer> {
 
+	
 }

@@ -17,7 +17,7 @@ import edu.mum.ea.entity.enumtype.Role;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

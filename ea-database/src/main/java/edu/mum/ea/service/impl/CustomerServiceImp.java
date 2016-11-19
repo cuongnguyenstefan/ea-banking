@@ -21,7 +21,8 @@ public class CustomerServiceImp implements CustomerService{
 	@Override
 	public List<Customer> findByName(String customerName) {
 		// TODO Auto-generated method stub
-		return (List<Customer>) customerRepository.findByName(customerName);
+//		return (List<Customer>) customerRepository.findByName(customerName);
+		return null;
 	}
 
 }
