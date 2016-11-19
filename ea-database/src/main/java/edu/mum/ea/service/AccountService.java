@@ -10,7 +10,4 @@ public interface AccountService {
 	
 	public Account create(Account account);
 
-	public double withdraw();
-	
-	public double deposit();
 }
