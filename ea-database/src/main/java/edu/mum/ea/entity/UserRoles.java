@@ -1,5 +1,6 @@
 package edu.mum.ea.entity;
 
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 
 import edu.mum.ea.entity.enumtype.Role;
 
+@Entity
 public class UserRoles {
 	
 	@Id
