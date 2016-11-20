@@ -1,6 +1,7 @@
 package edu.mum.ea.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -11,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -24,6 +29,14 @@ public abstract class User {
 	
 	private String lastName;
 	
+	private String phone;
+	
+	@Email
+	private String email;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+	
 	private String password;
 	
 	private int enabled = 1;
@@ -34,6 +47,38 @@ public abstract class User {
 	@Embedded
 	public Address address;
 	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	public String getPassword() {
 		return password;
 	}

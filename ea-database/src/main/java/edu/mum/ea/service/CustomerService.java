@@ -11,4 +11,6 @@ public interface CustomerService {
 	public List<Customer> findByName(String customerName);
 
 	public List<Customer> findByAccount(String customerAccount);
+	
+	public List<Customer> findAll();
 }

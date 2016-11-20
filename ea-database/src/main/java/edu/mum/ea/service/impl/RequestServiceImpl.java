@@ -13,7 +13,7 @@ import edu.mum.ea.repo.RequestRepository;
 import edu.mum.ea.service.RequestService;
 
 @Service
-@Transactional
+//@Transactional(dontRollbackOn=Exception.class)
 public class RequestServiceImpl implements RequestService {
 	
 	@Autowired
