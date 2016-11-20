@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="addAccount" method="post">
+	<h1>Account Information</h1>
+	<form action="accountInfo" method="post">
 		<table>
 			<tr>
 				<td>Customer id</td>
