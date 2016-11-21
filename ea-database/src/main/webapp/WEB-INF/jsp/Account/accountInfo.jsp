@@ -14,13 +14,33 @@
 	<h1>Account Information</h1>
 	<div id = "container">
 	
-		<form action="accountInfo" method="post">
-			<label for="amount">Amount: <input type="text" name="amount" id="amount" /></label><br><br>
-			<label for="amount">Interest: <input type="text" name="interest" id="interest" /></label><br><br>
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<input type="submit"  value="Deposit" />
-			<!--<input type="submit" name="/accountInfo" value="Withdraw" />-->
+		
+		Amount: ${ account.amount }<br><br>
+		
+			
+			<form action="withdraw" method="post">
+			<input type="hidden"  name="accountId" value = "${ account.id }"/>
+				<input type="submit" name="withdraw" value=" Withdraw" /> <input type="text" name="amount" id="amount" />
+
 		</form>
+			
+			
+			<form action="deposit" method="post">
+			
+			<input type="hidden"  name="accountId" value = "${ account.id }"/>
+			
+			<input type="submit" name="amount" value="Deposit" id="amount" />
+			
+			
+			 <input type="text" name="amount" id="amount" />
+		
+			</form>
+			<a href="/logout">Logout</a>
+			
+			<a href="/customer">Back</a>
+				
+			<!--<input type="submit" name="/accountInfo" value="Withdraw" />-->
+		
 		
 		<!-- <div class="clear"></div>
 		<div class="account-form">

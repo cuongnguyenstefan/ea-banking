@@ -42,11 +42,13 @@ public class AccountServiceImpl implements AccountService {
 		return account;
 	}
 
+
+
 	@Override
-	public Account findAllAccount(Account account) {
+	public Account get(Integer id) {
+		 Account a = accountRepository.findOne(id);
 		
-		 accountRepository.findOne(account.getId());
-		 return account;
+		return a ;
 	}
 
 	
