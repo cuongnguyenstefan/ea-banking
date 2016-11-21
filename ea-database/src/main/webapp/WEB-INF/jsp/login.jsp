@@ -24,7 +24,7 @@
 
 		<table>
 			<tr>
-				<td>User:</td>
+				<td>User ID:</td>
 				<td><input type='text' name='username'></td>
 			</tr>
 			<tr>

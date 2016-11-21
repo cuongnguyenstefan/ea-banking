@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,9 @@ public class RequestServiceImpl implements RequestService {
 		List<Request> waitingList = requestRepository.findByRequestStatusOrderByCreatedOnDesc(RequestStatus.WAITING);
 		List<Request> processingList = requestRepository.findByRequestStatusOrderByCreatedOnDesc(RequestStatus.PROCESSING);
 		waitingList.addAll(processingList);
+		for (Request r : waitingList) {
+			Hibernate.initialize(r.getCustomer());
+		}
 		return waitingList;
 	}
 
