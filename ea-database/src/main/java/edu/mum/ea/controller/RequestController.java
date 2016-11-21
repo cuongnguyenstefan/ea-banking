@@ -17,7 +17,7 @@ import edu.mum.ea.service.RequestService;
 @Controller
 @RequestMapping("/request")
 public class RequestController {
-	@Autowired
+	/*@Autowired
 	RequestService requestService;
 	@Autowired
 	CustomerService customerService;
@@ -39,4 +39,4 @@ public class RequestController {
 		requestService.saveOrUpdate(requestAccount);
 		return "redirect:list";
 	}
-}
+*/}

@@ -2,11 +2,21 @@ package edu.mum.ea.controller;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import edu.mum.ea.entity.Customer;
+import edu.mum.ea.entity.RequestAccount;
+import edu.mum.ea.entity.User;
+import edu.mum.ea.service.CustomerService;
+import edu.mum.ea.service.RequestService;
 
 @Controller
 public class UserController {
@@ -24,7 +34,7 @@ public class UserController {
 		return "User/login";
 	}
 
-	@RequestMapping("/register")
+	/*@RequestMapping("/register")
 	public String register() {
 		return "User/register";
 	}
@@ -34,5 +44,33 @@ public class UserController {
 		
 		return "User/register";
 	}
+*/
+	@Autowired
+	RequestService requestService;
+	@Autowired
+	CustomerService customerService;
+	
+	@RequestMapping(value = "/register" )
+	public String customerRequest(@ModelAttribute RequestAccount requestAccount) {
+		return "User/register";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String addCustomer(@ModelAttribute Customer customer, BindingResult result, RedirectAttributes redirectAttributes) {
+		// model.addAttribute("user", user);
+		// redirectAttributes.addFlashAttribute(requestAccount);
+		if (result.hasErrors()) {
+			return "User/register";
+		}
+		//requestAccount.getCustomer().setUsername(1234);
+		customerService.save(customer);
+		return "redirect:list";
+	}
+	@RequestMapping(value="/list",method=RequestMethod.GET)
+	public String listCustomer(@ModelAttribute Customer customer){
+		
+		return "User/customer";
+	}
+	
 
 }
