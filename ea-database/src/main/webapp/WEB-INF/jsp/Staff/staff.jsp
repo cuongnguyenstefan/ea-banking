@@ -32,5 +32,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<h3>Other Options</h3>
+	<div>
+		<div><a href="/staff/list">List Customers</a></div>
+		<div><a href="/staff/history">Get My Activities</a></div>
+		<div><a href="/">Home</a></div>
+		<div><a href="/logout">Logout</a></div>
+	</div>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class StaffHistory {
 	
 	private String action;
 	
-	private boolean isApproved;
+	private boolean approved;
 
 	public int getHistoryId() {
 		return historyId;
@@ -89,10 +89,12 @@ public class StaffHistory {
 	}
 
 	public boolean isApproved() {
-		return isApproved;
+		return approved;
 	}
 
-	public void setApproved(boolean isApproved) {
-		this.isApproved = isApproved;
+	public void setApproved(boolean approved) {
+		this.approved = approved;
 	}
+
+	
 }

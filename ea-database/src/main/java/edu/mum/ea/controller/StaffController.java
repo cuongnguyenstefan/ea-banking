@@ -30,6 +30,7 @@ import edu.mum.ea.entity.enumtype.RequestType;
 import edu.mum.ea.service.AccountService;
 import edu.mum.ea.service.CustomerService;
 import edu.mum.ea.service.RequestService;
+import edu.mum.ea.service.StaffHistoryService;
 import edu.mum.ea.service.StaffService;
 
 @Controller
@@ -47,14 +48,13 @@ public class StaffController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private StaffHistoryService staffHistoryService;
 
 	@RequestMapping(value = { "", "/" })
 	public String staffHome(Model model, HttpServletRequest request) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetail = (UserDetails) auth.getPrincipal();
-		String username = userDetail.getUsername();
-		Integer id = Integer.parseInt(username);
-		Staff staff = staffService.getStaff(id);
+		Staff staff = getStaff();
 		model.addAttribute("staff", staff);
 
 		// list request
@@ -81,11 +81,7 @@ public class StaffController {
 		RequestAccount request = (RequestAccount) requestService.get(parseInt);
 
 		// staff
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetail = (UserDetails) auth.getPrincipal();
-		String username = userDetail.getUsername();
-		Integer id = Integer.parseInt(username);
-		Staff staff = staffService.getStaff(id);
+		Staff staff = getStaff();
 		StaffHistory history = new StaffHistory();
 
 		Customer customer = request.getCustomer();
@@ -119,14 +115,33 @@ public class StaffController {
 		history.setCustomer(customer);
 		history.setStaff(staff);
 		history.setRequestType(RequestType.REQUEST_ACCOUNT);
-		staff.getHistories().add(history);
-		staffService.saveOrUpdate(staff);
+		staffHistoryService.save(history);
 
 		return "redirect:/staff";
 	}
+	
 	@RequestMapping(value="/list")
-	public String editCustomer(Customer customer, Model model) {
-		customerService.findAll();
-		return "Staff/editCustomer";
+	public String editCustomer(Model model) {
+		List<Customer> findAll = customerService.findAll();
+		model.addAttribute("customers", findAll);
+		return "Staff/listOfCustomers";
+	}
+	
+	@RequestMapping("/history")
+	public String history(Model model) {
+		Staff staff = getStaff();
+		List<StaffHistory> findByStaffId = staffHistoryService.findByStaffId(staff.getUsername());
+		model.addAttribute("histories", findByStaffId);
+		model.addAttribute("staff", staff);
+		return "Staff/history";
+	}
+	
+	private Staff getStaff() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetail = (UserDetails) auth.getPrincipal();
+		String username = userDetail.getUsername();
+		Integer id = Integer.parseInt(username);
+		Staff staff = staffService.getStaff(id);
+		return staff;
 	}
 }
