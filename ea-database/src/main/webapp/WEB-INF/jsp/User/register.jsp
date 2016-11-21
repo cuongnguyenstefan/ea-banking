@@ -31,7 +31,7 @@
 				</p></div-->
 				<div><p>
 					<label for="firstName">First Name</label>
-					<form:input id="firstName" path="customerfirstName" type="text" cssclassError ="form:input-large"/><br/>
+					<form:input id="firstName" path="firstName" type="text" cssclassError ="form:input-large"/><br/>
 					<form:errors path="firstName" id="errors"/>
 					</p></div>
 
@@ -86,11 +86,11 @@
 				   </p>
 				  </div>
 		
-				 <div><p>
+				<%--  <div><p>
 					<label for="username">UserName</label>
 					<form:input id="username" path="username" type="text" /><br/>
 					<form:errors path="username" id="errors"/>
-				 </p></div>
+				 </p></div> --%>
 					
 				 <div><p>
 					<label for="password">Password</label>
