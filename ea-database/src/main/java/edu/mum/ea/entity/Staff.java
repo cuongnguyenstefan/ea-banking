@@ -3,13 +3,14 @@ package edu.mum.ea.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Staff extends User {
 	
-	@OneToMany(mappedBy = "staff")
+	@OneToMany(mappedBy = "staff", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<StaffHistory> histories = new ArrayList<StaffHistory>();
 
 	public List<StaffHistory> getHistories() {
