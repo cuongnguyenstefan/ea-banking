@@ -10,7 +10,7 @@ public interface CustomerService {
 
 	public List<Customer> findByName(String customerName);
 
-	public List<Customer> findByAccount(String customerAccount);
+	public Customer findById(Integer userName );
 	
 	public List<Customer> findAll();
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,15 +32,16 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 	
 	@Override
-	public List<Customer> findByAccount(String customerAccount) {
+	public List<Customer> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Customer> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer findById(Integer userName) {
+		Customer findOne = customerRepository.findOne(userName);
+		Hibernate.initialize(findOne.getAccount());
+		return findOne;
 	}
 
 

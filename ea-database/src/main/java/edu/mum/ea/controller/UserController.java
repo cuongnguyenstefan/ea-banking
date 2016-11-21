@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.ea.entity.Customer;
-import edu.mum.ea.entity.RequestAccount;
-import edu.mum.ea.entity.User;
 import edu.mum.ea.service.CustomerService;
 import edu.mum.ea.service.RequestService;
 
@@ -51,26 +49,19 @@ public class UserController {
 	CustomerService customerService;
 	
 	@RequestMapping(value = "/register" )
-	public String customerRequest(@ModelAttribute RequestAccount requestAccount) {
+	public String customerRequest(@ModelAttribute Customer customer) {
 		return "User/register";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String addCustomer(@ModelAttribute Customer customer, BindingResult result, RedirectAttributes redirectAttributes) {
 		// model.addAttribute("user", user);
-		// redirectAttributes.addFlashAttribute(requestAccount);
+	    redirectAttributes.addFlashAttribute(customer);
 		if (result.hasErrors()) {
 			return "User/register";
 		}
 		//requestAccount.getCustomer().setUsername(1234);
 		customerService.save(customer);
-		return "redirect:list";
+		return "redirect:customer/list";
 	}
-	@RequestMapping(value="/list",method=RequestMethod.GET)
-	public String listCustomer(@ModelAttribute Customer customer){
-		
-		return "User/customer";
 	}
-	
-
-}

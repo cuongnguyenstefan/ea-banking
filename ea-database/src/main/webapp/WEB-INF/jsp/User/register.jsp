@@ -31,7 +31,7 @@
 				</p></div-->
 				<div><p>
 					<label for="firstName">First Name</label>
-					<form:input id="firstName" path="firstName" type="text" cssclassError ="form:input-large"/><br/>
+					<form:input id="firstName" path="customerfirstName" type="text" cssclassError ="form:input-large"/><br/>
 					<form:errors path="firstName" id="errors"/>
 					</p></div>
 
@@ -62,8 +62,8 @@
 							
 				<div><p>
 					  <label for="street">Street</label>
-					  <form:input id="street" path="customer.address.street" type="text" /><br/>
-					  <form:errors path="customer.address.street" id="errors"/>
+					  <form:input id="street" path="address.street" type="text" /><br/>
+					  <form:errors path="address.street" id="errors"/>
 				</p></div>
 									
 				 <div><p>
@@ -106,15 +106,6 @@
 			</div>
 				
 			</fieldset>
-			<%-- <fieldset>
-			<legend>Choose an account</legend>
-			
-				 <div>
-				 <input<a href='<spring:url value="/"/>'>Checking Account!</a>/>
-				 <input<a href='<spring:url value="/"/>'>Saving Account!</a>/>
-				 </div>
-			 
-			</fieldset> --%>
 			
 		</form:form>
  

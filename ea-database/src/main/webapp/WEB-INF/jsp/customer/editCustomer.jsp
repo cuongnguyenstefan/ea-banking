@@ -1,14 +1,29 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page session="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<title>Customer Add</title>
+<title>Login</title>
 </head>
 <body>
-		 	<form:form  modelAttribute="requestAccount" action="addRequest" method="POST">
+
+	<div id="register-box">
+
+		<h2>Register</h2>
+
+		<c:if test="${not empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+		<c:if test="${not empty msg}">
+			<div class="msg">${msg}</div>
+		</c:if>
+
+ <form:form  modelAttribute="customer" action="register" method="POST">
 			<fieldset>
 				<legend>NEW CUSTOMER</legend>
 				<!--  div><p>
@@ -16,31 +31,31 @@
 				</p></div-->
 				<div><p>
 					<label for="firstName">First Name</label>
-					<form:input id="firstName" path="customer.firstName" type="text" cssclassError ="form:input-large"/><br/>
-					<form:errors path="customer.firstName" id="errors"/>
+					<form:input id="firstName" path="firstName" type="text" cssclassError ="form:input-large"/><br/>
+					<form:errors path="firstName" id="errors"/>
 					</p></div>
 
 				<div><p>
 					<label for="lastName">Last Name</label>
-					<form:input id="lastName" path="customer.lastName" type="text" /><br/>
-					<form:errors path="customer.lastName" id="errors"/>
+					<form:input id="lastName" path="lastName" type="text" /><br/>
+					<form:errors path="lastName" id="errors"/>
 				</p></div>
 			
 			      <div><p>
 			     		<label for="dateOfBirth">Date of Birth</label>
-						  <form:input id="dateOfBirth" path="customer.dateOfBirth" type="text" /><br/>
-							<form:errors path="customer.dateOfBirth" id="errors"/>
+						  <form:input id="dateOfBirth" path="dateOfBirth" type="text" /><br/>
+							<form:errors path="dateOfBirth" id="errors"/>
 					</p></div>	
 					
 					 <div><p>
 			     		<label for="phone">Phone Number</label>
-						  <form:input  id="phone" path="customer.phone" type="text" /><br/>
-							<form:errors path="customer.phone" id="errors"/>
+						  <form:input  id="phone" path="phone" type="text" /><br/>
+							<form:errors path="phone" id="errors"/>
 					</p></div>
 					 <div><p>
 			     		<label for="email">Email</label>
-						  <form:input id="email" path="customer.email" type="text"  /><br/>
-							<form:errors path="customer.email" id="errors"/>
+						  <form:input id="email" path="email" type="text"  /><br/>
+							<form:errors path="email" id="errors"/>
 					</p></div>
 					
 					
@@ -53,34 +68,34 @@
 									
 				 <div><p>
 					<label for="city">City</label>
-					<form:input id="city" path="customer.address.city" type="text" /><br/>
-					<form:errors path="customer.address.city" id="errors"/>
+					<form:input id="city" path="address.city" type="text" /><br/>
+					<form:errors path="address.city" id="errors"/>
 				</p></div>
 						
 				<div><p>
 					<label for="state">State</label>
-					<form:input id="state" path="customer.address.state" type="text" /><br/>
-					<form:errors path="customer.address.state" id="errors"/>
+					<form:input id="state" path="address.state" type="text" /><br/>
+					<form:errors path="address.state" id="errors"/>
 				</p></div>
 					
 				  <div>
 				  <p>
 					<label for="zipCode">Zip Code</label>
-					<form:input id="zipCode" path="customer.address.zipCode" type="text" /><br/>
-					<form:errors path="customer.address.zipCode" id="errors"/>
+					<form:input id="zipCode" path="address.zipCode" type="text" /><br/>
+					<form:errors path="address.zipCode" id="errors"/>
 				   </p>
 				  </div>
 		
 				 <div><p>
 					<label for="username">UserName</label>
-					<form:input id="username" path="customer.username" type="text" /><br/>
-					<form:errors path="customer.username" id="errors"/>
+					<form:input id="username" path="username" type="text" /><br/>
+					<form:errors path="username" id="errors"/>
 				 </p></div>
 					
 				 <div><p>
 					<label for="password">Password</label>
-					<form:input id="password" path="customer.password" type="password" /><br/>
-					<form:errors path="customer.password" id="errors"/>
+					<form:input id="password" path="password" type="password" /><br/>
+					<form:errors path="password" id="errors"/>
 				 </p></div>
 				 
 			 <div>
@@ -91,7 +106,7 @@
 			</div>
 				
 			</fieldset>
-			<fieldset>
+			 <fieldset>
 			<legend>Choose an account</legend>
 			
 				 <div>
@@ -99,8 +114,12 @@
 				 <input<a href='<spring:url value="/"/>'>Saving Account!</a>/>
 				 </div>
 			 
-			</fieldset>
+			</fieldset> 
 			
 		</form:form>
-		</body>
+ 
+ 
+ 
+ 	</div>
+</body>
 </html>
