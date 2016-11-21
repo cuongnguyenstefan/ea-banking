@@ -28,6 +28,7 @@ import edu.mum.ea.entity.enumtype.AccountType;
 import edu.mum.ea.entity.enumtype.RequestStatus;
 import edu.mum.ea.entity.enumtype.RequestType;
 import edu.mum.ea.service.AccountService;
+import edu.mum.ea.service.CustomerService;
 import edu.mum.ea.service.RequestService;
 import edu.mum.ea.service.StaffService;
 
@@ -43,6 +44,9 @@ public class StaffController {
 
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private CustomerService customerService;
 
 	@RequestMapping(value = { "", "/" })
 	public String staffHome(Model model, HttpServletRequest request) {
@@ -119,5 +123,10 @@ public class StaffController {
 		staffService.saveOrUpdate(staff);
 
 		return "redirect:/staff";
+	}
+	@RequestMapping(value="/list")
+	public String editCustomer(Customer customer, Model model) {
+		customerService.findAll();
+		return "Staff/editCustomer";
 	}
 }

@@ -20,7 +20,7 @@
 		<a href="/staff">Go to Staff Page</a><br />
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<a href="/customer/list">Go to Customer Page</a><br />
+		<a href="/customer">Go to Customer Page</a><br />
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
 	    <a href="<c:url value="/logout" />">Logout</a>

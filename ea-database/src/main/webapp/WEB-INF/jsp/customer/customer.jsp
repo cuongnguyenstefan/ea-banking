@@ -26,25 +26,27 @@
 			${customer.address.zipCode}
 		</p>
 
-		<p>
-			<input type="button" id="btnAdd"
-				<a href="<c:url value="/addRequest" />"> 
-					Add Another Customer </a> />
-		</p>
+		<p>Request new Account:</p>
+		<a href="/customer/request?type=saving">Saving Account</a> <a
+			href="/customer/request?type=checking">Checking Account</a>
 	</fieldset>
 	<fieldset>
 		<legend>Choose an account</legend>
-		<c:forEach items="${customer.account}" var="account.id">
+		<c:forEach items="${customer.account}" var="account">
 			<div>
-				<c:if test="account.class.name == 'AccountChecking'">
+				<c:if
+					test="${account['class'] == 'class edu.mum.ea.entity.AccountChecking'}">
 
-					<input
-						<a href='<spring:url value="/account?accountId=${account. }"/>'>Checking Account!</a> />
+
+					<a href='<spring:url value="/account?accountId=${account.id }"/>'>Checking
+						Account!</a>
 				</c:if>
-				<c:if test="account.class.name == 'AccountSaving'">
+				<c:if
+					test="${account['class'] == 'class edu.mum.ea.entity.AccountSaving'}">
 
-					<input
-						<a href='<spring:url value="/account?accountId=${account. }"/>'>Saving Account!</a> />
+
+					<a href='<spring:url value="/account?accountId=${account.id }"/>'>Saving
+						Account!</a>
 				</c:if>
 			</div>
 		</c:forEach>
