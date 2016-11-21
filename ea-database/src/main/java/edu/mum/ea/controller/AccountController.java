@@ -17,39 +17,30 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-
-	/*
-	 * @RequestMapping( value= "/accountInfo", method = RequestMethod.GET)
-	 * public String accountInformation(Model model) { return
-	 * "Account/accountInfo"; }
-	 */
-	
-	
-	@RequestMapping( value= "", method = RequestMethod.GET)
-	public String accountInformation(Model model, @RequestParam String accountId)
-	{
-		int id =Integer.parseInt(accountId);
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String accountInformation(Model model, @RequestParam String accountId) {
+		int id = Integer.parseInt(accountId);
 		Account account = accountService.get(id);
 		model.addAttribute("account", account);
-		
+
 		return "Account/accountInfo";
 	}
 
 	@RequestMapping(value = "/deposit", method = RequestMethod.POST)
-	public String amountDeposit(Model model, @RequestParam Integer accountId, @RequestParam Double amount ) {
-		
-		accountService.deposit(accountId, amount);
+	public String amountDeposit(Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+		double parseDouble = Double.parseDouble(amount);
+		accountService.deposit(accountId, parseDouble);
 
 		return "redirect:/customer";
 	}
 
-	
-	 @RequestMapping( value= "/withdraw", method = RequestMethod.POST)
-	  public String amountWithdraw( Model model, @RequestParam Integer accountId, @RequestParam Double amount ) {
-	  
-		 accountService.withdraw(accountId, amount);
-	  return "redirect:/customer"; 
-	  
-	 }
-	
+	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
+	public String amountWithdraw(Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+		double ammountWithdraw = Double.parseDouble(amount);
+
+		accountService.withdraw(accountId, ammountWithdraw);
+		return "redirect:/customer";
+
+	}
+
 }
