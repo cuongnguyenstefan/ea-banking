@@ -6,7 +6,7 @@ import edu.mum.ea.entity.Customer;
 
 public interface CustomerService {
 
-	public void save(Customer customer);
+	public Customer save(Customer customer);
 
 	public List<Customer> findByName(String customerName);
 
