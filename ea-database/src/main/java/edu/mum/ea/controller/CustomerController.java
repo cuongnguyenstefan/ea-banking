@@ -35,7 +35,7 @@ public class CustomerController {
 	RequestService requestService;
 
 	@RequestMapping(value = {"", "/"})
-	public String listCustomer(Model model) {
+	public String listCustomer(@Valid Model model) {
 		Customer customer = getCustomer();
 		model.addAttribute("customer", customer);
 		return "customer/customer";
@@ -47,7 +47,7 @@ public class CustomerController {
 	
 
 	@RequestMapping(value="/request", method = RequestMethod.GET)
-	public String requestAccount(@RequestParam String type) {
+	public String requestAccount(@Valid @RequestParam String type) {
 		Customer customer = getCustomer();
 		RequestAccount requestAccount = new RequestAccount();
 		requestAccount.setCreatedOn(new Date());

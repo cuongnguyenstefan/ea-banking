@@ -1,15 +1,20 @@
 package edu.mum.ea.entity;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 
 @Embeddable
 public class Address {
-	
+	@NotNull(message="field.requered")
 	private String street;
+	@NotNull(message="field.requered")
 	private String state;
+	@NotNull(message="field.requered")
 	private String city;
+	@NotNull(message="field.requered")
 	private String zipCode;
+	@NotNull(message="field.requered")
 	private String country;
 		
 	public String getStreet() {

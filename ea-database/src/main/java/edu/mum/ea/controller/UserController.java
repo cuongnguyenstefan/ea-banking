@@ -1,5 +1,7 @@
 package edu.mum.ea.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,7 @@ public class UserController {
 	private UserRolesService userRolesService;
 
 	@RequestMapping("/login")
-	public String login(@RequestParam(value = "error", required = false) String error,
+	public String login(@Valid @RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model,
 			@ModelAttribute("newly") Customer customer) {
 		if (error != null) {
@@ -48,9 +50,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String addCustomer(@ModelAttribute Customer customer, BindingResult result,
+	public String addCustomer(@Valid @ModelAttribute Customer customer, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
+			result.getAllErrors();
 			return "User/register";
 		}
 		Customer save = customerService.save(customer);

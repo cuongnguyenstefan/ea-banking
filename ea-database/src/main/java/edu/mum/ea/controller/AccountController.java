@@ -2,6 +2,8 @@ package edu.mum.ea.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,7 +30,7 @@ public class AccountController {
 	private CustomerService customerService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String accountInformation(Model model, @RequestParam String accountId) {
+	public String accountInformation(@Valid Model model, @RequestParam String accountId) {
 
 		Customer customer = getCustomer();
 		int id = Integer.parseInt(accountId);
@@ -46,7 +48,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/deposit", method = RequestMethod.POST)
-	public String amountDeposit(Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+	public String amountDeposit(@Valid Model model, @RequestParam Integer accountId, @RequestParam String amount) {
 
 		Customer customer = getCustomer();
 		double parseDouble = Double.parseDouble(amount);
@@ -62,7 +64,7 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
-	public String amountWithdraw(Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+	public String amountWithdraw(@Valid Model model, @RequestParam Integer accountId, @RequestParam String amount) {
 
 		Customer customer = getCustomer();
 		double ammountWithdraw = Double.parseDouble(amount);

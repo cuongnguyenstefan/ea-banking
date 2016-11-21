@@ -9,6 +9,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.DecimalMin;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -22,7 +25,8 @@ public abstract class Account {
 	@ManyToOne
 	@JoinColumn(name="customerId")
 	private Customer customer;
-	
+	@DecimalMin("0")
+	@NotEmpty(message="{typeMismatch.searchInfo.amount}")
 	private double amount;
 	
 	public int getId() {

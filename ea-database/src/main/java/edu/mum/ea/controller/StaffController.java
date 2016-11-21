@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -75,7 +76,7 @@ public class StaffController {
 	}
 
 	@RequestMapping("/approval")
-	public String approvalNewAccount(@RequestParam boolean a, @RequestParam String rId) {
+	public String approvalNewAccount(@Valid @RequestParam boolean a, @RequestParam String rId) {
 		// request approving
 		int parseInt = Integer.parseInt(rId);
 		RequestAccount request = (RequestAccount) requestService.get(parseInt);
@@ -121,7 +122,7 @@ public class StaffController {
 	}
 	
 	@RequestMapping(value="/list")
-	public String editCustomer(Model model) {
+	public String editCustomer(@Valid Model model) {
 		List<Customer> findAll = customerService.findAll();
 		model.addAttribute("customers", findAll);
 		return "Staff/listOfCustomers";

@@ -15,6 +15,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -25,26 +27,26 @@ public abstract class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer username;
-	
+	@NotNull(message="field.requered")
 	private String firstName;
-	
+	@NotNull(message="field.requered")
 	private String lastName;
-	
+	@NotNull(message="field.requered")
 	private String phone;
 	
 	@Email
 	private String email;
-	
+	@NotNull(message="field.requered")
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
-	
+	@NotNull(message="field.requered")
 	private String password;
 	
 	private int enabled = 1;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
 	private List<UserRoles> roles = new ArrayList<UserRoles>();
-	
+	@Valid
 	@Embedded
 	public Address address;
 	

@@ -11,7 +11,7 @@ public class Customer extends User {
 	    
 		@OneToMany(mappedBy = "customer")
 		private List<Account> account = new ArrayList<Account>();
-
+    
 		public List<Account> getAccount() {
 			return account;
 		}
