@@ -8,8 +8,6 @@ public interface CustomerService {
 
 	public Customer save(Customer customer);
 
-	public List<Customer> findByName(String customerName);
-
 	public Customer findById(Integer userName );
 	
 	public List<Customer> findAll();
