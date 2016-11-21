@@ -2,8 +2,6 @@ package edu.mum.ea.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,7 +48,9 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public Request get(Integer id) {
-		return requestRepository.findOne(id);
+		Request findOne = requestRepository.findOne(id);
+		Hibernate.initialize(findOne.getCustomer());
+		return findOne;
 	}
 
 }
