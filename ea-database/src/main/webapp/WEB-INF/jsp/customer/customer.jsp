@@ -27,8 +27,7 @@
 		</p>
 
 		<p>Request new Account:</p>
-		<a href="/customer/request?type=saving">Saving Account</a> <a
-			href="/customer/request?type=checking">Checking Account</a>
+		<a href="/customer/choose">Choose an Account</a>
 	</fieldset>
 	<fieldset>
 		<legend>Choose an account</legend>

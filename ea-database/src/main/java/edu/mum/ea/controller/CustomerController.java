@@ -34,14 +34,19 @@ public class CustomerController {
 	@Autowired
 	RequestService requestService;
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = {"", "/"})
 	public String listCustomer(Model model) {
 		Customer customer = getCustomer();
 		model.addAttribute("customer", customer);
 		return "customer/customer";
 	}
+	@RequestMapping(value = "/choose")
+	public String accountChoos() {
+		return "customer/chooseAccount";
+	}
+	
 
-	@RequestMapping("/request")
+	@RequestMapping(value="/request", method = RequestMethod.GET)
 	public String requestAccount(@RequestParam String type) {
 		Customer customer = getCustomer();
 		RequestAccount requestAccount = new RequestAccount();
