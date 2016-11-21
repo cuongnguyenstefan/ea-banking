@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import edu.mum.ea.entity.Account;
+import edu.mum.ea.entity.User;
 import edu.mum.ea.repo.AccountRepository;
 import edu.mum.ea.service.AccountService;
 
@@ -38,5 +39,20 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.save(account);
 		return account;
 	}
+
+	@Override
+	public Account findAllAccount(Account account) {
+		
+		 accountRepository.findOne(account.getId());
+		 return account;
+	}
+
+	
+
+	
+
+	
+
+	
 
 }
