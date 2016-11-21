@@ -15,8 +15,12 @@
 		<form:form action="accountAdd" method="POST" commandname = "accountAdd">
 
 			
-				<label for="amount">Amount: <input type="text" name="amount" id="amount" /></label>
-				<label for="amount">Interest: <input type="text" name="interest" id="interest" /></label>
+				Amount:  
+				
+				
+				
+				<label for="amount">Deposit:<input type="text" name="amount" id="amount" /></label>
+				<label for="amount">Withdraw: <input type="text" name="interest" id="interest" /></label>
 				
 			<input type="submit" name="/accountInfo" value="Deposit" />
 			<input type="submit" name="/accountInfo" value="Withdraw" />
