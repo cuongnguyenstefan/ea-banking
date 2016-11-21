@@ -3,6 +3,8 @@ package edu.mum.ea.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +17,7 @@ import edu.mum.ea.entity.Request;
 import edu.mum.ea.entity.RequestAccount;
 import edu.mum.ea.entity.RequestInfo;
 import edu.mum.ea.entity.Staff;
+import edu.mum.ea.entity.enumtype.Role;
 import edu.mum.ea.service.RequestService;
 import edu.mum.ea.service.StaffService;
 
@@ -29,7 +32,7 @@ public class StaffController {
 	private RequestService requestService;
 
 	@RequestMapping(value = { "", "/" })
-	public String staffHome(Model model) {
+	public String staffHome(Model model, HttpServletRequest request) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetail = (UserDetails) auth.getPrincipal();
 		String username = userDetail.getUsername();
@@ -51,7 +54,7 @@ public class StaffController {
 		model.addAttribute("accountRequests", ra);
 		model.addAttribute("infoRequests", ri);
 		
-		return "staff";
+		return "Staff/staff";
 	}
 
 }
