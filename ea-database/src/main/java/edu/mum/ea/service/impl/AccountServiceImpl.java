@@ -1,8 +1,10 @@
 package edu.mum.ea.service.impl;
 
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import edu.mum.ea.entity.Account;
 import edu.mum.ea.entity.User;
 import edu.mum.ea.repo.AccountRepository;
@@ -29,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
 	public Account deposit(Integer accountId, Double amount) {
 
 		Account account = accountRepository.findOne(accountId);
-		account.setAmount(account.getAmount() + account.getAmount() * account.getInterest());
+		account.setAmount(account.getAmount() + amount);
 		accountRepository.save(account);
 		return account;
 	}

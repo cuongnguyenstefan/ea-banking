@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.ea.entity.Account;
 import edu.mum.ea.entity.AccountChecking;
@@ -18,6 +19,7 @@ public class AccountController {
 
 	@Autowired
 	private AccountService accountService;
+<<<<<<< HEAD
 
 	/*
 	 * @RequestMapping( value= "/accountInfo", method = RequestMethod.GET)
@@ -27,6 +29,13 @@ public class AccountController {
 
 	@RequestMapping(value = "/accountInfo", method = RequestMethod.GET)
 	public String accountInformations(Model model) {
+=======
+	
+	
+	@RequestMapping( value= "/account", method = RequestMethod.GET)
+	public String accountInformation(Model model, @RequestParam String accountId)
+	{
+>>>>>>> origin/master
 		return "Account/accountInfo";
 	}
 

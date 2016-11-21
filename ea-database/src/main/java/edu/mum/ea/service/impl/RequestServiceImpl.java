@@ -2,8 +2,7 @@ package edu.mum.ea.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ import edu.mum.ea.repo.RequestRepository;
 import edu.mum.ea.service.RequestService;
 
 @Service
-@Transactional
+//@Transactional(dontRollbackOn=Exception.class)
 public class RequestServiceImpl implements RequestService {
 	
 	@Autowired
@@ -35,6 +34,9 @@ public class RequestServiceImpl implements RequestService {
 		List<Request> waitingList = requestRepository.findByRequestStatusOrderByCreatedOnDesc(RequestStatus.WAITING);
 		List<Request> processingList = requestRepository.findByRequestStatusOrderByCreatedOnDesc(RequestStatus.PROCESSING);
 		waitingList.addAll(processingList);
+		for (Request r : waitingList) {
+			Hibernate.initialize(r.getCustomer());
+		}
 		return waitingList;
 	}
 
@@ -46,7 +48,9 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	public Request get(Integer id) {
-		return requestRepository.findOne(id);
+		Request findOne = requestRepository.findOne(id);
+		Hibernate.initialize(findOne.getCustomer());
+		return findOne;
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import edu.mum.ea.entity.enumtype.Role;
 
@@ -24,10 +25,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/customer/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")
 				.antMatchers("/account/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")	
 				.antMatchers("/staff/**").access("hasRole('" + Role.ROLE_ADMIN.getValue() + "')")
+				
 			.and()
 				.formLogin()
 				.loginPage("/login").failureUrl("/login?error")
 				.usernameParameter("username").passwordParameter("password")
+			.and()
+				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
 			.and()
 				.exceptionHandling().accessDeniedPage("/403")
 			.and()

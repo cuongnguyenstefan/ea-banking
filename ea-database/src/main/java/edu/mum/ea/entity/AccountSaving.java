@@ -15,8 +15,4 @@ public class AccountSaving extends Account {
 		this.interest = interest;
 	}
 
-	private double deposit() {
-		return getAmount() + getInterest() * getAmount();
-	}
-
 }

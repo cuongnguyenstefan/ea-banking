@@ -2,6 +2,7 @@ package edu.mum.ea.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -28,7 +29,7 @@ public abstract class Request {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int requestId;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH) 
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 	
