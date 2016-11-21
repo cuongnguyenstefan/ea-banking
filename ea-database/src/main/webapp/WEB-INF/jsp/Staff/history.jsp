@@ -7,7 +7,8 @@
 <body>
 	<h1>Hello Staff ID: ${staff.username}</h1>
 	<h3>Staff: ${staff.firstName} ${staff.lastName}</h3>
-	<h3>List of your activities</h3>
+	<fieldset>
+				<legend>List of your activities</legend>
 	<table>
 		<thead>
 			<tr>
@@ -32,6 +33,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</fieldset>
 	<div>
 		<a href="/staff">Back</a>
 	</div>
