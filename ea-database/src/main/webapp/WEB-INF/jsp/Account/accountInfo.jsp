@@ -25,18 +25,17 @@
 
 
 		<form action="account/withdraw" method="post">
-			<input type="hidden" name="accountId" value="${ account.id }" /> <input
-				type="submit" name="withdraw" value=" Withdraw" /> <input
-				type="text" name="amount" id="amount" /> <input type="hidden"
-				name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="hidden" name="accountId" value="${ account.id }" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value=" Withdraw" />
+			<input type="text" name="amount" id="amount" />
 		</form>
 
 		<form action="account/deposit" method="post">
 
-			<input type="hidden" name="accountId" value="${ account.id }" /> <input
-				type="submit" name="amount" value="Deposit" id="amount" /> <input
-				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
+			<input type="hidden" name="accountId" value="${ account.id }" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="Deposit" id="amount" />
 			<input type="text" name="amount" id="amount" />
 
 		</form>

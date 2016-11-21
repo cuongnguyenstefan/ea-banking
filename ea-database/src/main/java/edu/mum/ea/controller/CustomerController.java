@@ -54,7 +54,7 @@ public class CustomerController {
 			requestAccount.setAccountType(AccountType.CHECKING);
 		}
 		requestService.saveOrUpdate(requestAccount);
-		return "customer/customer";
+		return "redirect:/customer";
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
