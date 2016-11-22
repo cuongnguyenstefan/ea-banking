@@ -37,10 +37,10 @@
 	</table>
 	</fieldset>
 	<div>
-		<a href="/staff"><spring:message code="form.back.label"/>Back</a>
+		<a href="/staff"><spring:message code="form.back.label"/></a>
 	</div>
 	<div>
-		<a href="/logout"><spring:message code="form.logout.label"/>Logout</a>
+		<a href="/logout"><spring:message code="form.logout.label"/></a>
 	</div>
 </body>
 </html>

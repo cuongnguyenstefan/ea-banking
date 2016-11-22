@@ -8,14 +8,14 @@
 <title>Welcome</title>
 </head>
 <body>
-	<h1 style="text-align: center" >Welcome to our Bank Account Management System</h1>
-	<img src="resources/Bank.jpg" alt="Mountain View" style="width:304px;height:228px;">
-	<sec:authorize access="isAnonymous()">
 	<a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
-		<h1 style="text-align: center"><spring:message code="form.welcome.label"/></h1>
+	<h1 style="text-align: center"><spring:message code="form.welcome.label"/></h1>
+	<!-- <img src="resources/Bank.jpg" alt="Mountain View"
+			style="width: 100%; height: 100%; position: relative; margin-right: auto; margin-left: auto;"> -->
+	<sec:authorize access="isAnonymous()">
+		
 			
-		<img src="resources/Bank.jpg" alt="Mountain View"
-			style="width: 100%; height: 100%; position: relative; margin-right: auto; margin-left: auto;">
+		
 		<div style="text-align: center">
 			<h3>
 				<spring:message code="form.signIn.label"/> <a href="/login"><spring:message code="form.loginHere.label"/></a>
@@ -26,15 +26,19 @@
 		</div>
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<a href="/staff"><spring:message code="form.goTOStaffPage.label"/></a>
-		<br />
+		<div style="text-align: center">
+			<a href="/staff"><spring:message code="form.goTOStaffPage.label"/></a>
+		</div>
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<a href="/customer"><spring:message code="form.goTOCustomerPage.label"/></a>
-		<br />
+		<div style="text-align: center">
+			<a href="/customer"><spring:message code="form.goTOCustomerPage.label"/></a>
+		</div>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-		<a href="<c:url value="/logout" />"><spring:message code="form.logout.label"/></a>
+		<div style="text-align: center">
+			<a href="<c:url value="/logout" />"><spring:message code="form.logout.label"/></a>
+		</div>
 	</sec:authorize>
 </body>
 </html>
