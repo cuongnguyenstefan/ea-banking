@@ -9,7 +9,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<title>Login</title>
+<title>Register</title>
 </head>
 <body>
 
@@ -27,35 +27,37 @@
 		<form:form modelAttribute="customer" action="register" method="POST">
 			<fieldset>
 				<legend>NEW CUSTOMER</legend>
-				<div>
-					<p>
-						<form:errors path="*" id="errors" />
-					</p>
-				</div>
+				
 				<div>
 					<p>
 						<label for="firstName">First Name</label>
 						<form:input id="firstName" path="firstName" type="text" />
-						<br />
-						<form:errors path="firstName" id="errors" />
+					
+						
+						<form:errors path="firstName" cssStyle="color : red;" />
+                    
 					</p>
 				</div>
 
 				<div>
 					<p>
 						<label for="lastName">Last Name</label>
-						<form:input id="lastName" path="lastName" type="text" />
-						<br />
-						<form:errors path="lastName" id="errors" />
-					</p>
+						<form:input id="lastName" path="lastName" type="text" />  
+						
+					
+						<form:errors path="lastName" cssStyle="color : red;" />
+                    
+                   </p>
+					
 				</div>
 
 				<div>
 					<p>
 						<label for="dateOfBirth">Date of Birth</label>
 						<form:input id="dateOfBirth" path="dateOfBirth" type="text" />
-						<br />
-						<form:errors path="dateOfBirth" id="errors" />
+						
+						<form:errors path="dateOfBirth" cssStyle="color : red;" />
+                    
 					</p>
 				</div>
 
@@ -63,16 +65,18 @@
 					<p>
 						<label for="phone">Phone Number</label>
 						<form:input id="phone" path="phone" type="text" />
-						<br />
-						<form:errors path="phone" id="errors" />
+						
+						<form:errors path="phone" cssStyle="color : red;" />
+                   
 					</p>
 				</div>
 				<div>
 					<p>
 						<label for="email">Email</label>
 						<form:input id="email" path="email" type="text" />
-						<br />
-						<form:errors path="email" id="errors" />
+						
+						<form:errors path="email" cssStyle="color : red;" />
+                     
 					</p>
 				</div>
 
@@ -82,8 +86,9 @@
 					<p>
 						<label for="street">Street</label>
 						<form:input id="street" path="address.street" type="text" />
-						<br />
-						<form:errors path="address.street" id="errors" />
+						
+						<form:errors path="address.street" cssStyle="color : red;" />
+                     
 					</p>
 				</div>
 
@@ -91,8 +96,9 @@
 					<p>
 						<label for="city">City</label>
 						<form:input id="city" path="address.city" type="text" />
-						<br />
-						<form:errors path="address.city" id="errors" />
+						
+						<form:errors path="address.city" cssStyle="color : red;" />
+                     
 					</p>
 				</div>
 
@@ -100,8 +106,9 @@
 					<p>
 						<label for="state">State</label>
 						<form:input id="state" path="address.state" type="text" />
-						<br />
-						<form:errors path="address.state" id="errors" />
+						
+						<form:errors path="address.state" cssStyle="color : red;" />
+                    
 					</p>
 				</div>
 
@@ -109,17 +116,29 @@
 					<p>
 						<label for="zipCode">Zip Code</label>
 						<form:input id="zipCode" path="address.zipCode" type="text" />
-						<br />
-						<form:errors path="address.zipCode" id="errors" />
+						
+						<form:errors path="address.zipCode" cssStyle="color : red;" />
+                     
+					</p>
+				</div>
+				
+				<div>
+					<p>
+						<label for="country">Country</label>
+						<form:input id="country" path="address.country" type="text" />
+						
+						<form:errors path="address.country" cssStyle="color : red;" />
+                    
 					</p>
 				</div>
 
 				<div>
 					<p>
 						<label for="password">Password</label>
-						<form:input id="password" path="password" type="password" />
-						<br />
-						<form:errors path="password" id="errors" />
+						<form:input id="password" path="password" type="text" />
+						
+						<form:errors path="password" cssStyle="color : red;" />
+                    
 					</p>
 				</div>
 

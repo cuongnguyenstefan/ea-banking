@@ -25,8 +25,7 @@ public abstract class Account {
 	@ManyToOne
 	@JoinColumn(name="customerId")
 	private Customer customer;
-	@DecimalMin("0")
-	@NotEmpty(message="{typeMismatch.searchInfo.amount}")
+	
 	private double amount;
 	
 	public int getId() {

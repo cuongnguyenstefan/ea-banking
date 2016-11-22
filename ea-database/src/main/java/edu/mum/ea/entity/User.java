@@ -16,9 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -27,19 +27,18 @@ public abstract class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer username;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="First Name is Requered")
 	private String firstName;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Last Name is Requered")
 	private String lastName;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Phone is Requered")
 	private String phone;
-	
-	@Email
+	@NotEmpty(message="Email is required")
+	@Email(message="Please input a valid email")
 	private String email;
-	@NotNull(message="field.requered")
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Password is Requered")
 	private String password;
 	
 	private int enabled = 1;
