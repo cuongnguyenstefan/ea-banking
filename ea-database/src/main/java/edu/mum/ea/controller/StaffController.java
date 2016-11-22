@@ -13,7 +13,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.mum.ea.constant.BankingConstant;
@@ -46,10 +49,10 @@ public class StaffController {
 
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private StaffHistoryService staffHistoryService;
 
@@ -120,14 +123,14 @@ public class StaffController {
 
 		return "redirect:/staff";
 	}
-	
-	@RequestMapping(value="/list")
+
+	@RequestMapping(value = "/list")
 	public String editCustomer(@Valid Model model) {
 		List<Customer> findAll = customerService.findAll();
 		model.addAttribute("customers", findAll);
 		return "Staff/listOfCustomers";
 	}
-	
+
 	@RequestMapping("/history")
 	public String history(Model model) {
 		Staff staff = getStaff();
@@ -135,6 +138,28 @@ public class StaffController {
 		model.addAttribute("histories", findByStaffId);
 		model.addAttribute("staff", staff);
 		return "Staff/history";
+	}
+
+	@RequestMapping("/updateUser")
+	public String updatePage(@RequestParam String id, Model model) {
+		try {
+			Integer userName = Integer.parseInt(id);
+			Customer customer = customerService.findById(userName);
+			model.addAttribute("customer", customer);
+			return "Staff/editcustomer";
+		} catch (NumberFormatException e) {
+			return "redirect:/staff";
+		}
+	}
+
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	public String updateUser(@ModelAttribute @Valid Customer customer, BindingResult result) {
+		if (result.hasErrors()) {
+			result.getAllErrors();
+			return "Staff/editcustomer";
+		}
+		customerService.save(customer);
+		return "redirect:/staff/list";
 	}
 	
 	private Staff getStaff() {

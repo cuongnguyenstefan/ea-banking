@@ -9,13 +9,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-<title>Register</title>
+<title>Edit</title>
 </head>
 <body>
 
 	<div id="register-box">
-          <a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
-		<h2><spring:message code="form.register.label"/></h2>
+
+		<h2>Edit</h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -24,13 +24,12 @@
 			<div class="msg">${msg}</div>
 		</c:if>
 
-		<form:form modelAttribute="customer" action="register" method="POST">
+		<form:form modelAttribute="customer" action="updateUser" method="POST">
 			<fieldset>
-				<legend><spring:message code="form.newCustomer.label"/></legend>
-				
+				<legend>EDIT CUSTOMER ID: <form:input id="username" path="username" type="text" /></legend>
 				<div>
 					<p>
-						<label for="firstName"><spring:message code="form.firstName.label"/></label>
+						<label for="firstName">First Name</label>
 						<form:input id="firstName" path="firstName" type="text" />
 					
 						
@@ -41,7 +40,7 @@
 
 				<div>
 					<p>
-						<label for="lastName"><spring:message code="form.lastName.label"/></label>
+						<label for="lastName">Last Name</label>
 						<form:input id="lastName" path="lastName" type="text" />  
 						
 					
@@ -53,7 +52,7 @@
 
 				<div>
 					<p>
-						<label for="dateOfBirth"><spring:message code="form.dateOfBirth.label"/></label>
+						<label for="dateOfBirth">Date of Birth</label>
 						<form:input id="dateOfBirth" path="dateOfBirth" type="text" />
 						
 						<form:errors path="dateOfBirth" cssStyle="color : red;" />
@@ -63,7 +62,7 @@
 
 				<div>
 					<p>
-						<label for="phone"><spring:message code="form.phone.label"/></label>
+						<label for="phone">Phone Number</label>
 						<form:input id="phone" path="phone" type="text" />
 						
 						<form:errors path="phone" cssStyle="color : red;" />
@@ -72,7 +71,7 @@
 				</div>
 				<div>
 					<p>
-						<label for="email"><spring:message code="form.email.label"/></label>
+						<label for="email">Email</label>
 						<form:input id="email" path="email" type="text" />
 						
 						<form:errors path="email" cssStyle="color : red;" />
@@ -84,7 +83,7 @@
 
 				<div>
 					<p>
-						<label for="street"><spring:message code="form.address.street.label"/></label>
+						<label for="street">Street</label>
 						<form:input id="street" path="address.street" type="text" />
 						
 						<form:errors path="address.street" cssStyle="color : red;" />
@@ -94,7 +93,7 @@
 
 				<div>
 					<p>
-						<label for="city"><spring:message code="form.address.city.label"/></label>
+						<label for="city">City</label>
 						<form:input id="city" path="address.city" type="text" />
 						
 						<form:errors path="address.city" cssStyle="color : red;" />
@@ -104,7 +103,7 @@
 
 				<div>
 					<p>
-						<label for="state"><spring:message code="form.address.state.label"/></label>
+						<label for="state">State</label>
 						<form:input id="state" path="address.state" type="text" />
 						
 						<form:errors path="address.state" cssStyle="color : red;" />
@@ -114,7 +113,7 @@
 
 				<div>
 					<p>
-						<label for="zipCode"><spring:message code="form.address.zipCode.label"/></label>
+						<label for="zipCode">Zip Code</label>
 						<form:input id="zipCode" path="address.zipCode" type="text" />
 						
 						<form:errors path="address.zipCode" cssStyle="color : red;" />
@@ -124,7 +123,7 @@
 				
 				<div>
 					<p>
-						<label for="country"><spring:message code="form.address.country.label"/></label>
+						<label for="country">Country</label>
 						<form:input id="country" path="address.country" type="text" />
 						
 						<form:errors path="address.country" cssStyle="color : red;" />
@@ -134,7 +133,7 @@
 
 				<div>
 					<p>
-						<label for="password"><spring:message code="form.password.label"/></label>
+						<label for="password">Password</label>
 						<form:input id="password" path="password" type="password" />
 						
 						<form:errors path="password" cssStyle="color : red;" />
@@ -144,8 +143,8 @@
 
 				<div>
 					<p>
-						<input type="submit" value= "<spring:message code="form.submit.label"/>" id="btnAdd" />
-						<a	href='<spring:url value="/"/>'><spring:message code="form.home.label"/></a>
+						<input type="submit" value="Update" id="btnAdd" /> <a
+							href='<spring:url value="/staff/list"/>'>Back</a>
 					</p>
 				</div>
 

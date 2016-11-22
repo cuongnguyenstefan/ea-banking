@@ -8,6 +8,8 @@
 <title>Welcome</title>
 </head>
 <body>
+	<h1 style="text-align: center" >Welcome to our Bank Account Management System</h1>
+	<img src="resources/Bank.jpg" alt="Mountain View" style="width:304px;height:228px;">
 	<sec:authorize access="isAnonymous()">
 	<a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
 		<h1 style="text-align: center"><spring:message code="form.welcome.label"/></h1>
