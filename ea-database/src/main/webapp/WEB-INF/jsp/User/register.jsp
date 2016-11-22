@@ -135,7 +135,7 @@
 				<div>
 					<p>
 						<label for="password">Password</label>
-						<form:input id="password" path="password" type="text" />
+						<form:input id="password" path="password" type="password" />
 						
 						<form:errors path="password" cssStyle="color : red;" />
                     
