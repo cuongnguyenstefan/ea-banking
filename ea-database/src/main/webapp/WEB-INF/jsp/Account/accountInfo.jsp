@@ -16,6 +16,20 @@
 	clear: both;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+	$(function() {
+		$('#info').on('click', function(){
+			$('#info').prop('disabled', true);
+			$.get("/customer/rest").done(function(data) {
+				$.each(data, function(index, value) {
+					$('#info-div').append(index + ': ' + value + ' <br />');
+				});
+			});
+		});
+	});
+	
+</script>
 </head>
 <body>
 	<h1>Account Information</h1>
@@ -23,7 +37,9 @@
 
 
 		Amount: ${ account.amount }<br> <br>
-
+		
+		<button id="info" class="show">Show Info</button>
+		<div id="info-div"></div>
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
@@ -43,6 +59,7 @@
 
 		</form>
 		<a href="/logout">Logout</a> <a href="/customer">Back</a>
+		
 	</div>
 </body>
 </html>
