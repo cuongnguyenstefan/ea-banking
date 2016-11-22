@@ -10,8 +10,10 @@
 <body>
 	<a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
 	<h1 style="text-align: center"><spring:message code="form.welcome.label"/></h1>
-	<!-- <img src="resources/Bank.jpg" alt="Mountain View"
-			style="width: 100%; height: 100%; position: relative; margin-right: auto; margin-left: auto;"> -->
+	<div style="width:100%; text-align:center">
+	<img src="/Bank.jpg" alt="Mountain View"
+			style="width: 50%; height: 50%; position: relative; margin-right: auto; margin-left: auto;">
+			</div>
 	<sec:authorize access="isAnonymous()">
 		
 			
