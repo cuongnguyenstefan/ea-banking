@@ -5,6 +5,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">@import url("<spring:url value="/resource/css/main.css"/>");</style>
 <title>List Of Customers</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('button.show').on('click', function() {
+			$(this).prop('disabled', true);
+			var id = $(this).next().val();
+			var button = $(this);
+			$.get('/request/rest/' + id).done(function(data){
+				$.each(data, function(i, v){
+					button.parent().next().append("Request: <br/>");
+					$.each(v, function(idx, val){
+						button.parent().next().append("---" + idx + ": " + val + "<br/>");
+					});
+				});
+			});
+		})
+	});
+</script>
 </head>
 <body>
 	<div id="global">
@@ -20,6 +38,7 @@
 				<th>Email</th>
 				<th>Address</th>
 				<th>Options</th>
+				<th></th>
 				</tr>
 		    
 			<c:forEach items="${customers}" var="user">
@@ -33,7 +52,11 @@
 					<td> ${user.address.street}, ${user.address.city}, ${user.address.state} ${user.address.zipCode}</td>
 					<td>
 							<a href="<spring:url value="/staff/updateUser?id=${user.username}"/>" >Update</a>
+							<button class="show">Show Requests</button>
+							<input type="hidden" value="${user.username}"/>
 					</td>
+					<td class="requests"></td>
+					
 			 </tr>
 			</c:forEach>
 	</table>
