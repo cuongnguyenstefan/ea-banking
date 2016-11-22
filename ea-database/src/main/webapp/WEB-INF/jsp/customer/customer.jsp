@@ -40,14 +40,14 @@
 
 
 					<a href='<spring:url value="/account?accountId=${account.id }"/>'>
-					<spring:message code="form.checkingAccount.label"/>!</a>
+					<spring:message code="form.checkingAccount.label"/>: ${account.id }</a>
 				</c:if>
 				<c:if
 					test="${account['class'] == 'class edu.mum.ea.entity.AccountSaving'}">
 
 
 					<a href='<spring:url value="/account?accountId=${account.id }"/>'>
-					<spring:message code="form.savingAccount.label"/>!</a>
+					<spring:message code="form.savingAccount.label"/>: ${account.id }</a>
 				</c:if>
 			</div>
 		</c:forEach>
