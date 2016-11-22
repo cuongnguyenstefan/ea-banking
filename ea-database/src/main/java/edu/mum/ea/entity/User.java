@@ -36,11 +36,11 @@ public abstract class User {
 	@NotEmpty(message="Phone is Requered")
 	@Size(min=10, max=11)
 	private String phone;
+	@NotEmpty(message="Email is required")
 	@Email(message="Please input a valid email")
 	private String email;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/MM/YYYY")
-	@NotEmpty(message="Birthday is required")
 	private Date dateOfBirth;
 	@NotEmpty(message="Password is Requered")
 	@Size(min=3, max=20)
