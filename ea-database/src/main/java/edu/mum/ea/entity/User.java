@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -33,14 +34,17 @@ public abstract class User {
 	@NotEmpty(message="Last Name is Requered")
 	private String lastName;
 	@NotEmpty(message="Phone is Requered")
+	@Size(min=10, max=11)
 	private String phone;
 	@NotEmpty(message="Email is required")
 	@Email(message="Please input a valid email")
 	private String email;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="dd/MM/YYYY")
+	@NotEmpty(message="Birthday is required")
 	private Date dateOfBirth;
 	@NotEmpty(message="Password is Requered")
+	@Size(min=3, max=20)
 	private String password;
 	
 	private int enabled = 1;
