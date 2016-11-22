@@ -12,17 +12,19 @@
 				<legend>Customer list</legend>
 			<table style="width:100%">
 				<tr>
+				<th>Username</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>DateOfBirth</th>
 				<th>Phone</th>
 				<th>Email</th>
 				<th>Address</th>
+				<th>Options</th>
 				</tr>
 		    
 			<c:forEach items="${customers}" var="user">
 				<tr>
-					<td>${user.customerNumber} </td>
+					<td>${user.username} </td>
 					<td>${user.firstName}</td>
 					<td>${user.lastName}</td>
 					<td>${user.dateOfBirth} </td>
@@ -30,21 +32,19 @@
 					<td>${user.email} </td>
 					<td> ${user.address.street}, ${user.address.city}, ${user.address.state} ${user.address.zipCode}</td>
 					<td>
-							<a href="<spring:url value="/customer/update?id=${user.userName}"/>" >
-							<input type="button" id="btnCancel"  value ="<spring:message code="edit.customer.btn"></spring:message>"/></a>
+							<a href="<spring:url value="/staff/updateUser?id=${user.username}"/>" >Update</a>
 					</td>
-<%-- 					<td>
-							<a href="<spring:url value="/customers/delete?id=${customer.id}"/>" >
-							<input type="button" id="btnDelete"  value ="<spring:message code="delete.customer.btn"></spring:message>"/></a>
-					</td> --%>
 			 </tr>
 			</c:forEach>
 	</table>
 	<hr>
-	<p>
-	  <a href="<c:url value="/customer/add" />" ><input type="button" id="btnAdd"  value ="<spring:message code="add.customer.btn"></spring:message>"/> </a>
-	</p>
 	</fieldset>
+	<div>
+		<a href="/staff">Back</a>
+	</div>
+	<div>
+		<a href="/logout">Logout</a>
+	</div>
 	</div>
 </body>
 </html>

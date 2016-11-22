@@ -1,4 +1,4 @@
-package edu.mum.ea.security;
+package edu.mum.ea.config;
 
 import javax.sql.DataSource;
 
@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/customer/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")
 				.antMatchers("/account/**").access("hasRole('" + Role.ROLE_USER.getValue() + "')")	
 				.antMatchers("/staff/**").access("hasRole('" + Role.ROLE_ADMIN.getValue() + "')")
-				
+				.antMatchers("/login").anonymous()
 			.and()
 				.formLogin()
 				.loginPage("/login").failureUrl("/login?error")

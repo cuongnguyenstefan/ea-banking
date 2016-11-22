@@ -1,20 +1,21 @@
 package edu.mum.ea.entity;
 
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Embeddable
 public class Address {
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Street is Requered")
 	private String street;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="State is Requered")
 	private String state;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="City is Requered")
 	private String city;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Zipcode is Requered")
 	private String zipCode;
-	@NotNull(message="field.requered")
+	@NotEmpty(message="Country is Requered")
 	private String country;
 		
 	public String getStreet() {
