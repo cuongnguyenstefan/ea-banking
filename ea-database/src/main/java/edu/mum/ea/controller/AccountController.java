@@ -10,9 +10,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.mum.ea.entity.Account;
 import edu.mum.ea.entity.Customer;
@@ -30,7 +32,7 @@ public class AccountController {
 	private CustomerService customerService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String accountInformation(@Valid Model model, @RequestParam String accountId) {
+	public String accountInformation(@Valid Model model, @RequestParam String accountId, @ModelAttribute("error") String error) {
 
 		Customer customer = getCustomer();
 		int id = Integer.parseInt(accountId);
@@ -39,7 +41,9 @@ public class AccountController {
 			if (account.getId() == id) {
 
 				model.addAttribute("account", account);
-
+				if (error != null && error != "") {
+					model.addAttribute("error", error);
+				}
 				return "Account/accountInfo";
 			}
 		}
@@ -48,37 +52,55 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/deposit", method = RequestMethod.POST)
-	public String amountDeposit(@Valid Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+	public String amountDeposit(@RequestParam Integer accountId, @RequestParam String amount, RedirectAttributes redirectAttributes) {
 
 		Customer customer = getCustomer();
-		double parseDouble = Double.parseDouble(amount);
+		try {
+			double parseDouble = Double.parseDouble(amount);
 
-		List<Account> accounts = customer.getAccount();
-		for (Account account : accounts) {
-			if (account.getId() == accountId) {
-				accountService.deposit(accountId, parseDouble);
-				return "redirect:/customer";
+			List<Account> accounts = customer.getAccount();
+			for (Account account : accounts) {
+				if (account.getId() == accountId) {
+					accountService.deposit(accountId, parseDouble);
+					return "redirect:/customer";
+				}
 			}
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("error", "Wrong input!");
 		}
-		return "/";
+		
+		return "redirect:/account?accountId="+accountId;
 	}
 
 	@RequestMapping(value = "/withdraw", method = RequestMethod.POST)
-	public String amountWithdraw(@Valid Model model, @RequestParam Integer accountId, @RequestParam String amount) {
+	public String amountWithdraw(@Valid Model model, @RequestParam Integer accountId, @RequestParam String amount, RedirectAttributes redirectAttributes) {
 
 		Customer customer = getCustomer();
-		double ammountWithdraw = Double.parseDouble(amount);
-
-		List<Account> accounts = customer.getAccount();
-
-		for (Account account : accounts) {
-			if (account.getId() == accountId) {
-				accountService.withdraw(accountId, ammountWithdraw);
-				return "redirect:/customer";
+		double amountWithdraw = 0;
+		try {
+			amountWithdraw = Double.parseDouble(amount);
+			List<Account> accounts = customer.getAccount();
+			
+			for (Account account : accounts) {
+				if (account.getId() == accountId) {
+					
+					if(account.getAmount() >= amountWithdraw){
+						accountService.withdraw(accountId, amountWithdraw);
+						return "redirect:/customer";
+					}	
+					
+					redirectAttributes.addFlashAttribute("error", "Actual Account is less than Withdraw amount.");
+					break;
+					
+				}
+				
 			}
-
+			
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("error", "Invalid input");
 		}
-		return "/";
+
+		return "redirect:/account?accountId="+accountId;
 
 	}
 
