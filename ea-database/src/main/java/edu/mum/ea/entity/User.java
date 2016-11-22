@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -37,6 +38,7 @@ public abstract class User {
 	@Email(message="Please input a valid email")
 	private String email;
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="dd/MM/YYYY")
 	private Date dateOfBirth;
 	@NotEmpty(message="Password is Requered")
 	private String password;
