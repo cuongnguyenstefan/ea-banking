@@ -41,10 +41,16 @@
 			</c:forEach>
 	</table>
 	<hr>
-	<p>
+	<%-- <p>
 	  <a href="<c:url value="/customer/add" />" ><input type="button" id="btnAdd"  value ="<spring:message code="add.customer.btn"></spring:message>"/> </a>
-	</p>
+	</p> --%>
 	</fieldset>
+	<div>
+		<a href="/staff">Back</a>
+	</div>
+	<div>
+		<a href="/logout">Logout</a>
+	</div>
 	</div>
 </body>
 </html>

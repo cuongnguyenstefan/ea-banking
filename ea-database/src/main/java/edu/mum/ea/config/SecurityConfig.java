@@ -1,4 +1,4 @@
-package edu.mum.ea.security;
+package edu.mum.ea.config;
 
 import javax.sql.DataSource;
 
