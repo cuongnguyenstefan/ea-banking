@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="true"%>
 <html>
 <head>
@@ -8,26 +9,30 @@
 </head>
 <body>
 	<sec:authorize access="isAnonymous()">
-		<h1 style="text-align: center" >Welcome to our Bank Account Management System</h1>
-		<img src="resources/Bank.jpg" alt="Mountain View" style="width:304px;height:228px;">
+	<a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
+		<h1 style="text-align: center"><spring:message code="form.welcome.label"/></h1>
+			
+		<img src="resources/Bank.jpg" alt="Mountain View"
+			style="width: 100%; height: 100%; position: relative; margin-right: auto; margin-left: auto;">
 		<div style="text-align: center">
-		<h3>
-			Already user? <a href="/login">Login Here</a>
-		</h3>
-		<h3>
-		   New Client? 
-			<a href="/register">Register Here</a>
-		</h3>
+			<h3>
+				<spring:message code="form.signIn.label"/> <a href="/login"><spring:message code="form.loginHere.label"/></a>
+			</h3>
+			<h3>
+				<spring:message code="form.newClient.label"/><a href="/register"><spring:message code="form.registerHere.label"/></a>
+			</h3>
 		</div>
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<a href="/staff">Go to Staff Page</a><br />
+		<a href="/staff"><spring:message code="form.goTOStaffPage.label"/></a>
+		<br />
 	</sec:authorize>
 	<sec:authorize access="hasRole('ROLE_USER')">
-		<a href="/customer">Go to Customer Page</a><br />
+		<a href="/customer"><spring:message code="form.goTOCustomerPage.label"/></a>
+		<br />
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-	    <a href="<c:url value="/logout" />">Logout</a>
+		<a href="<c:url value="/logout" />"><spring:message code="form.logout.label"/></a>
 	</sec:authorize>
 </body>
 </html>

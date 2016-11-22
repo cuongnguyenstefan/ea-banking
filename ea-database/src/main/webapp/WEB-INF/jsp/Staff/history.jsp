@@ -1,23 +1,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="true"%>
 <html>
 <head>
 <title>Staff History</title>
 </head>
 <body>
-	<h1>Hello Staff ID: ${staff.username}</h1>
-	<h3>Staff: ${staff.firstName} ${staff.lastName}</h3>
+   <a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
+	<h1><spring:message code="form.helloStaffID.label"/>: ${staff.username}</h1>
+	<h3><spring:message code="form.staff.label"/>: ${staff.firstName} ${staff.lastName}</h3>
 	<fieldset>
-				<legend>List of your activities</legend>
+				<legend><spring:message code="form.listofyouractivities.label"/></legend>
 	<table>
 		<thead>
 			<tr>
-				<th>History ID</th>
-				<th>Approved</th>
-				<th>Request Type</th>
-				<th>Customer ID</th>
-				<th>Created On</th>
-				<th>Action</th>
+				<th><spring:message code="form.historyID.label"/></th>
+				<th><spring:message code="form.approved.label"/></th>
+				<th><spring:message code="form.requestType.label"/></th>
+				<th><spring:message code="form.customerID.label"/></th>
+				<th><spring:message code="form.createdOn.label"/></th>
+				<th><spring:message code="form.action.label"/></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -35,10 +37,10 @@
 	</table>
 	</fieldset>
 	<div>
-		<a href="/staff">Back</a>
+		<a href="/staff"><spring:message code="form.back.label"/>Back</a>
 	</div>
 	<div>
-		<a href="/logout">Logout</a>
+		<a href="/logout"><spring:message code="form.logout.label"/>Logout</a>
 	</div>
 </body>
 </html>

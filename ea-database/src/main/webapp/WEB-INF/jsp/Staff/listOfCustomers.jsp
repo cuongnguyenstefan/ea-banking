@@ -8,16 +8,17 @@
 </head>
 <body>
 	<div id="global">
+	<a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
 					<fieldset>
-				<legend>Customer list</legend>
+				<legend><spring:message code="form.Customerlist.label"/></legend>
 			<table style="width:100%">
 				<tr>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>DateOfBirth</th>
-				<th>Phone</th>
-				<th>Email</th>
-				<th>Address</th>
+				<th><spring:message code="form.firstName.label"/></th>
+				<th><spring:message code="form.lastName.label"/></th>
+				<th><spring:message code="form.dateOfBirth.label"/></th>
+				<th><spring:message code="form.phone.label"/></th>
+				<th><spring:message code="form.email.label"/></th>
+				<th><spring:message code="form.address.label"/></th>
 				</tr>
 		    
 			<c:forEach items="${customers}" var="user">
@@ -31,7 +32,7 @@
 					<td> ${user.address.street}, ${user.address.city}, ${user.address.state} ${user.address.zipCode}</td>
 					<td>
 							<a href="<spring:url value="/customer/update?id=${user.userName}"/>" >
-							<input type="button" id="btnCancel"  value ="<spring:message code="edit.customer.btn"></spring:message>"/></a>
+							<input type="button" id="btnCancel"  value ="<spring:message code="form.submit.label"/>"/></a>
 					</td>
 <%-- 					<td>
 							<a href="<spring:url value="/customers/delete?id=${customer.id}"/>" >

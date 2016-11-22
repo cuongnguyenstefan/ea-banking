@@ -14,8 +14,8 @@
 <body>
 
 	<div id="register-box">
-
-		<h2>Register</h2>
+          <a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
+		<h2><spring:message code="form.register.label"/></h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -26,11 +26,11 @@
 
 		<form:form modelAttribute="customer" action="register" method="POST">
 			<fieldset>
-				<legend>NEW CUSTOMER</legend>
+				<legend><spring:message code="form.newCustomer.label"/></legend>
 				
 				<div>
 					<p>
-						<label for="firstName">First Name</label>
+						<label for="firstName"><spring:message code="form.firstName.label"/></label>
 						<form:input id="firstName" path="firstName" type="text" />
 					
 						
@@ -41,7 +41,7 @@
 
 				<div>
 					<p>
-						<label for="lastName">Last Name</label>
+						<label for="lastName"><spring:message code="form.lastName.label"/></label>
 						<form:input id="lastName" path="lastName" type="text" />  
 						
 					
@@ -53,7 +53,7 @@
 
 				<div>
 					<p>
-						<label for="dateOfBirth">Date of Birth</label>
+						<label for="dateOfBirth"><spring:message code="form.dateOfBirth.label"/></label>
 						<form:input id="dateOfBirth" path="dateOfBirth" type="text" />
 						
 						<form:errors path="dateOfBirth" cssStyle="color : red;" />
@@ -63,7 +63,7 @@
 
 				<div>
 					<p>
-						<label for="phone">Phone Number</label>
+						<label for="phone"><spring:message code="form.phone.label"/></label>
 						<form:input id="phone" path="phone" type="text" />
 						
 						<form:errors path="phone" cssStyle="color : red;" />
@@ -72,7 +72,7 @@
 				</div>
 				<div>
 					<p>
-						<label for="email">Email</label>
+						<label for="email"><spring:message code="form.email.label"/></label>
 						<form:input id="email" path="email" type="text" />
 						
 						<form:errors path="email" cssStyle="color : red;" />
@@ -84,7 +84,7 @@
 
 				<div>
 					<p>
-						<label for="street">Street</label>
+						<label for="street"><spring:message code="form.address.street.label"/></label>
 						<form:input id="street" path="address.street" type="text" />
 						
 						<form:errors path="address.street" cssStyle="color : red;" />
@@ -94,7 +94,7 @@
 
 				<div>
 					<p>
-						<label for="city">City</label>
+						<label for="city"><spring:message code="form.address.city.label"/></label>
 						<form:input id="city" path="address.city" type="text" />
 						
 						<form:errors path="address.city" cssStyle="color : red;" />
@@ -104,7 +104,7 @@
 
 				<div>
 					<p>
-						<label for="state">State</label>
+						<label for="state"><spring:message code="form.address.state.label"/></label>
 						<form:input id="state" path="address.state" type="text" />
 						
 						<form:errors path="address.state" cssStyle="color : red;" />
@@ -114,7 +114,7 @@
 
 				<div>
 					<p>
-						<label for="zipCode">Zip Code</label>
+						<label for="zipCode"><spring:message code="form.address.zipCode.label"/></label>
 						<form:input id="zipCode" path="address.zipCode" type="text" />
 						
 						<form:errors path="address.zipCode" cssStyle="color : red;" />
@@ -124,7 +124,7 @@
 				
 				<div>
 					<p>
-						<label for="country">Country</label>
+						<label for="country"><spring:message code="form.address.country.label"/></label>
 						<form:input id="country" path="address.country" type="text" />
 						
 						<form:errors path="address.country" cssStyle="color : red;" />
@@ -134,7 +134,7 @@
 
 				<div>
 					<p>
-						<label for="password">Password</label>
+						<label for="password"><spring:message code="form.password.label"/></label>
 						<form:input id="password" path="password" type="text" />
 						
 						<form:errors path="password" cssStyle="color : red;" />
@@ -144,8 +144,8 @@
 
 				<div>
 					<p>
-						<input type="submit" id="btnAdd" /> <a
-							href='<spring:url value="/"/>'>Home</a>
+						<input type="submit" value= "<spring:message code="form.submit.label"/>" id="btnAdd" />
+						<a	href='<spring:url value="/"/>'><spring:message code="form.home.label"/></a>
 					</p>
 				</div>
 

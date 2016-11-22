@@ -8,51 +8,53 @@
 <title>Customer Page</title>
 </head>
 <body>
+   <a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
 	<fieldset>
-		<legend>Customer Detail</legend>
+	
+		<legend><spring:message code="form.customerDetail.label"/></legend>
 		<p>
-			<strong>First Name:</strong> ${customer.firstName}
+			<strong><spring:message code="form.firstName.label"/>:</strong> ${customer.firstName}
 		</p>
 		<p>
-			<strong>Last Name:</strong> ${customer.lastName}
+			<strong><spring:message code="form.lastName.label"/>:</strong> ${customer.lastName}
 		</p>
 
 		<p>
-			<strong>Date Of Birth:</strong> ${customer.dateOfBirth}
+			<strong><spring:message code="form.dateOfBirth.label"/>:</strong> ${customer.dateOfBirth}
 		</p>
 		<p>
-			<strong>Address:</strong> ${customer.address.street},
+			<strong><spring:message code="form.address.label"/>:</strong> ${customer.address.street},
 			${customer.address.city}, ${customer.address.state}
 			${customer.address.zipCode}
 		</p>
 
-		<p>Request new Account:</p>
-		<a href="/customer/choose">Choose an Account</a>
+		<p><spring:message code="form.requestnewAccount.label"/>:</p>
+		<a href="/customer/choose"><spring:message code="form.chooseanAccount.label"/></a>
 	</fieldset>
 	<fieldset>
-		<legend>Choose an account</legend>
+		<legend><spring:message code="form.chooseanAccount.label"/></legend>
 		<c:forEach items="${customer.account}" var="account">
 			<div>
 				<c:if
 					test="${account['class'] == 'class edu.mum.ea.entity.AccountChecking'}">
 
 
-					<a href='<spring:url value="/account?accountId=${account.id }"/>'>Checking
-						Account!</a>
+					<a href='<spring:url value="/account?accountId=${account.id }"/>'>
+					<spring:message code="form.checkingAccount.label"/>!</a>
 				</c:if>
 				<c:if
 					test="${account['class'] == 'class edu.mum.ea.entity.AccountSaving'}">
 
 
-					<a href='<spring:url value="/account?accountId=${account.id }"/>'>Saving
-						Account!</a>
+					<a href='<spring:url value="/account?accountId=${account.id }"/>'>
+					<spring:message code="form.savingAccount.label"/>!</a>
 				</c:if>
 			</div>
 		</c:forEach>
 
 	</fieldset>
 
-	<a href="logout">logout</a>
+	<a href="logout"><spring:message code="form.logout.label"/></a>
 
 </body>
 </html>

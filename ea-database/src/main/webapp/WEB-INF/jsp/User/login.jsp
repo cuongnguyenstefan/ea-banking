@@ -1,6 +1,7 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page session="true"%>
 <html>
 <head>
@@ -9,8 +10,8 @@
 <body>
 
 	<div id="login-box">
-
-		<h2>Login with Username and Password</h2>
+   <a href="?lang=en_US" >English</a>|<a href="?lang=sp_SP" >Spanish</a>
+		<h2><spring:message code="form.loginwithUsernameandPassword.label"/></h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
@@ -25,16 +26,16 @@
 
 		<table>
 			<tr>
-				<td>User ID:</td>
+				<td><spring:message code="form.userID.label"/></td>
 				<td><input type='text' name='username'></td>
 			</tr>
 			<tr>
-				<td>Password:</td>
+				<td><spring:message code="form.password.label"/></td>
 				<td><input type='password' name='password' /></td>
 			</tr>
 			<tr>
 				<td colspan='2'><input name="submit" type="submit"
-				  value="submit" /></td>
+				  value="<spring:message code="form.submit.label"/>" /></td>
 			</tr>
 		  </table>
 
